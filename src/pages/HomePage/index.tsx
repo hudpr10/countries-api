@@ -30,10 +30,10 @@ const HomePage = () => {
   // Pegar todos os países
   useEffect(() => {
     async function getAll() {
-      const res = await fetch(
+      const response = await fetch(
         "https://restcountries.com/v3.1/all?fields=name,capital,flags,population,region,cca2"
       );
-      const json = await res.json();
+      const json = await response.json();
       const ordened = json.sort(
         (a: CountryResponseType, b: CountryResponseType) =>
           a.name.common.localeCompare(b.name.common)

@@ -47,4 +47,5 @@ export type CountryDetailedType = {
   currencies?: CurrenciesType;
   languages?: LanguagesType;
   borders?: string[];
+  flags: FlagsType;
 };

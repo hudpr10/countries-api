@@ -3,6 +3,7 @@ import { darkTheme, lightTheme } from "../../themes/themes";
 import { CardStyled } from "./style";
 import type { RootState } from "../../redux/store";
 import type { CountryResponseType } from "../../types";
+import REGEX from "../../regex";
 
 type DataType = {
   data: CountryResponseType;
@@ -10,9 +11,6 @@ type DataType = {
 
 const CountryCard = ({ data }: DataType) => {
   const { darkMode } = useSelector((state: RootState) => state.theme);
-
-  // REGEX para adicionar pontos automaticamente
-  const REGEX: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
   return (
     <CardStyled
