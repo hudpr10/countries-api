@@ -11,14 +11,22 @@ type DataType = {
 const CountryCard = ({ data }: DataType) => {
   const { darkMode } = useSelector((state: RootState) => state.theme);
 
+  // REGEX para adicionar pontos automaticamente
+  const REGEX: RegExp = /\B(?=(\d{3})+(?!\d))/g;
+
   return (
-    <CardStyled theme={darkMode ? darkTheme : lightTheme}>
+    <CardStyled
+      theme={darkMode ? darkTheme : lightTheme}
+      href={`/country/${data.cca2.toLowerCase()}`}
+    >
       <img src={data.flags.svg} alt={data.flags.alt} />
       <footer>
         <h2>{data.name.common}</h2>
         <span>
           <strong>População: </strong>
-          {data.population}
+          {data.population === 0
+            ? "Nenhum Habitante..."
+            : data.population.toString().replace(REGEX, ".")}
         </span>
         <span>
           <strong>Região: </strong>
@@ -26,7 +34,7 @@ const CountryCard = ({ data }: DataType) => {
         </span>
         <span>
           <strong>Capital: </strong>
-          {data.capital[0]}
+          {data.capital[0] ?? "Sem Informações..."}
         </span>
       </footer>
     </CardStyled>

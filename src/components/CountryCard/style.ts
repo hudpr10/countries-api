@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const CardStyled = styled.div`
+const CardStyled = styled.a`
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow);
@@ -8,6 +8,14 @@ const CardStyled = styled.div`
   border-radius: 4px;
   background-color: ${({ theme }) => theme.elementsBackground};
   transition: 200ms;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: var(--hover-shadow);
+    opacity: 0.6;
+  }
 
   img {
     width: 300px;

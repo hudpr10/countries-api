@@ -31,7 +31,7 @@ const HomePage = () => {
   useEffect(() => {
     async function getAll() {
       const res = await fetch(
-        "https://restcountries.com/v3.1/all?fields=name,capital,flags,population,region"
+        "https://restcountries.com/v3.1/all?fields=name,capital,flags,population,region,cca2"
       );
       const json = await res.json();
       const ordened = json.sort(

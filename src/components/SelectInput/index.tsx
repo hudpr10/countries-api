@@ -17,9 +17,10 @@ const SelectInput = ({ value, setValue }: SelectInputProps) => {
       value={value}
       onChange={(e) => setValue(e.target.value)}
     >
-      <option value="">Todas as Regiões</option>
+      <option value="">Todos os Continentes</option>
       <option value="Africa">África</option>
       <option value="Americas">América</option>
+      <option value="Antarctic">Antártida</option>
       <option value="Asia">Ásia</option>
       <option value="Europe">Europa</option>
       <option value="Oceania">Oceânia</option>

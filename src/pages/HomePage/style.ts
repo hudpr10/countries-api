@@ -15,7 +15,7 @@ const MainStyled = styled.main`
   gap: 32px;
 `;
 
-const FormContainerStyled = styled.form`
+const FormContainerStyled = styled.div`
   display: flex;
   justify-content: space-between;
 `;

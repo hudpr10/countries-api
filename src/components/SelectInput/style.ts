@@ -8,7 +8,7 @@ const SelectStyled = styled.select`
   box-shadow: var(--shadow);
 
   font-size: 1rem;
-  width: 200px;
+  width: 210px;
 
   background-color: ${({ theme }) => theme.elementsBackground};
   color: ${({ theme }) => theme.color};
