@@ -10,6 +10,7 @@ const HeaderStyled = styled.header`
   nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     max-width: 1440px;
     margin: 0 auto;
@@ -21,11 +22,11 @@ const HeaderStyled = styled.header`
   }
 
   button {
-    width: 141px;
-
     display: flex;
     align-items: center;
     gap: 8px;
+    width: 133px;
+    white-space: nowrap;
 
     background-color: transparent;
     border: none;
@@ -35,10 +36,21 @@ const HeaderStyled = styled.header`
 
     cursor: pointer;
     transition: 200ms;
-    padding: 8px;
+    padding: 8px 0 8px 8px;
 
     &:hover {
       opacity: 0.7;
+    }
+  }
+
+  @media screen and (max-width: 1456px) {
+    // Adicionando respiro nas laterais em dispositivos menores
+    padding: 24px 16px;
+  }
+
+  @media screen and (max-width: 450px) {
+    h1 {
+      font-size: 1rem;
     }
   }
 `;

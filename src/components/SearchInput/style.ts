@@ -26,6 +26,10 @@ const InputContainerStyled = styled.div`
   input::placeholder {
     color: ${({ theme }) => theme.placeholder};
   }
+
+  @media screen and (max-width: 580px) {
+    width: 100%;
+  }
 `;
 
 export { InputContainerStyled };
