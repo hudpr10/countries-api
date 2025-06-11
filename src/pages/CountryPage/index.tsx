@@ -38,7 +38,7 @@ const CountryPage = () => {
     }
 
     getCountry();
-  }, []);
+  }, [countryCode]);
 
   return (
     <CountryPageStyled theme={darkMode ? darkTheme : lightTheme}>

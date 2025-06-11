@@ -80,7 +80,7 @@ const CountryDetails = ({ data }: CountryDetailsProps) => {
     } else {
       setNeighbors([]);
     }
-  }, []);
+  }, [data.borders]);
 
   return (
     <CountryDetailedContainer theme={darkMode ? darkTheme : lightTheme}>

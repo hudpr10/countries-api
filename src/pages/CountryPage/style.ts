@@ -38,6 +38,10 @@ const MainStyled = styled.main`
     box-shadow: var(--hover-shadow);
     opacity: 0.7;
   }
+
+  @media screen and (max-width: 1456px) {
+    padding: 0 16px;
+  }
 `;
 
 export { CountryPageStyled, MainStyled };

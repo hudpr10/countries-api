@@ -4,6 +4,7 @@ const CountryDetailedContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 64px;
 
   /* Imagem */
   img {
@@ -11,6 +12,10 @@ const CountryDetailedContainer = styled.section`
     border-radius: 8px;
     width: 40%;
     height: 400px;
+
+    @media screen and (max-width: 1456px) {
+      width: 45%;
+    }
   }
 
   /* Titulo mais Detalhes */
@@ -68,6 +73,28 @@ const CountryDetailedContainer = styled.section`
   a:hover {
     box-shadow: var(--hover-shadow);
     opacity: 0.6;
+  }
+
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+    gap: 24px;
+    align-items: start;
+
+    main {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 300px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    div {
+      flex-direction: column;
+      gap: 24px;
+    }
   }
 `;
 
