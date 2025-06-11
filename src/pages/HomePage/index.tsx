@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { useEffect, useState } from "react";
 import type { CountryResponseType } from "../../types";
+import Loading from "../../components/Loading";
 
 const HomePage = () => {
   const { darkMode } = useSelector((state: RootState) => state.theme);
@@ -79,11 +80,13 @@ const HomePage = () => {
           />
         </FormContainerStyled>
         <CountriesContainerStyled>
-          {countriesOnDisplay !== undefined
-            ? countriesOnDisplay.map((data, index) => (
-                <CountryCard key={index} data={data} />
-              ))
-            : "NAO"}
+          {countriesOnDisplay !== undefined ? (
+            countriesOnDisplay.map((data, index) => (
+              <CountryCard key={index} data={data} />
+            ))
+          ) : (
+            <Loading />
+          )}
         </CountriesContainerStyled>
       </MainStyled>
     </HomePageStyled>

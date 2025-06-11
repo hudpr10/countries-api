@@ -15,7 +15,7 @@ const CountryCard = ({ data }: DataType) => {
   return (
     <CardStyled
       theme={darkMode ? darkTheme : lightTheme}
-      href={`/country/${data.cca2.toLowerCase()}`}
+      href={`/country?q=${data.cca2.toLowerCase()}`}
     >
       <img src={data.flags.svg} alt={data.flags.alt} />
       <footer>

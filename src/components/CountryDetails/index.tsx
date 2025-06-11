@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { CountryDetailedType } from "../../types";
+import type { CountryDetailedType, NameType } from "../../types";
 import { CountryDetailedContainer } from "./style";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
@@ -10,13 +10,22 @@ type CountryDetailsProps = {
   data: CountryDetailedType;
 };
 
+type NeighborsType = {
+  name: NameType;
+  cca3: string;
+};
+
 const CountryDetails = ({ data }: CountryDetailsProps) => {
+  // Darkmode do Redux
   const { darkMode } = useSelector((state: RootState) => state.theme);
 
+  // Dados que precisam de modificação antes de serem exibidos
   const [nativeName, setNativeName] = useState<string>();
   const [currencies, setCurrencies] = useState<string>();
   const [languages, setLanguages] = useState<string>();
+  const [neighbors, setNeighbors] = useState<NeighborsType[] | []>();
 
+  // Trabalhando com os dados
   useEffect(() => {
     if (data.name.nativeName) {
       const nativeNameShort = Object.keys(data.name.nativeName);
@@ -52,6 +61,27 @@ const CountryDetails = ({ data }: CountryDetailsProps) => {
     }
   }, [data]);
 
+  // Requisição na API para pegar o nome dos países vizinhos
+  useEffect(() => {
+    async function getNeighbors(neighbors: string) {
+      const response = await fetch(
+        `https://restcountries.com/v3.1/alpha?codes=${neighbors}&fields=name,cca3`
+      );
+      const json = await response.json();
+
+      if (json !== undefined) {
+        setNeighbors(json);
+      }
+    }
+
+    if (data.borders?.length !== 0 && data.borders !== undefined) {
+      const neighborsCountries = data.borders?.join(",");
+      getNeighbors(neighborsCountries);
+    } else {
+      setNeighbors([]);
+    }
+  }, []);
+
   return (
     <CountryDetailedContainer theme={darkMode ? darkTheme : lightTheme}>
       <img src={data.flags.svg} alt={data.flags.alt} />
@@ -61,7 +91,7 @@ const CountryDetails = ({ data }: CountryDetailsProps) => {
           <ul>
             <li>
               <strong>Nome Nativo: </strong>
-              {nativeName}
+              {nativeName ? nativeName : "Sem dados..."}
             </li>
             <li>
               <strong>População: </strong>
@@ -79,32 +109,39 @@ const CountryDetails = ({ data }: CountryDetailsProps) => {
             </li>
             <li>
               <strong>Capital: </strong>
-              {data.capital?.join(", ")}
+              {data.capital?.length !== 0
+                ? data.capital?.join(", ")
+                : "Sem dados..."}
             </li>
           </ul>
           <ul>
             <li>
               <strong>Domínio: </strong>
-              {data.tld}
+              {data.tld.join(" | ")}
             </li>
             <li>
               <strong>Moedas: </strong>
-              {currencies}
+              {currencies ? currencies : "Sem dados..."}
             </li>
             <li>
               <strong>Idiomas: </strong>
-              {languages}
+              {languages ? languages : "Sem dados..."}
             </li>
           </ul>
         </div>
-        {data.borders ? (
+        {data.borders?.length !== 0 ? (
           <span>
             Fronteiras:{" "}
-            {data.borders.map((border, index) => (
-              <a key={index} href={`/country/${border.toLowerCase()}`}>
-                {border}
-              </a>
-            ))}
+            {neighbors
+              ? neighbors.map((neighbor, index) => (
+                  <a
+                    key={index}
+                    href={`/country?q=${neighbor.cca3.toLowerCase()}`}
+                  >
+                    {neighbor.name.common}
+                  </a>
+                ))
+              : null}
           </span>
         ) : null}
       </main>
