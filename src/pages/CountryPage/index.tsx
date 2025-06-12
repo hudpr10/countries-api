@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import { CountryPageStyled, MainStyled } from "./style";
-import type { CountryDetailedType } from "../../types";
 import CountryDetails from "../../components/CountryDetails";
+import Loading from "../../components/Loading";
+
+import { CountryPageStyled, MainStyled } from "./style";
+import { darkTheme, lightTheme } from "../../themes/themes";
+
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router";
+
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
-import { darkTheme, lightTheme } from "../../themes/themes";
-import { ChevronLeft } from "lucide-react";
-import { useNavigate, useSearchParams } from "react-router";
-import Loading from "../../components/Loading";
+import type { CountryDetailedType } from "../../types";
+import BackButton from "../../components/BackButton";
 
 const CountryPage = () => {
   // Darkmode que vem do REDUX
@@ -34,19 +37,21 @@ const CountryPage = () => {
       );
       const json = await response.json();
 
-      setCountryData(json);
+      if (json.message) {
+        navigate("/not-found");
+      } else {
+        setCountryData(json);
+      }
     }
 
     getCountry();
-  }, [countryCode]);
+  }, [countryCode, navigate]);
 
   return (
     <CountryPageStyled theme={darkMode ? darkTheme : lightTheme}>
       <Header />
       <MainStyled theme={darkMode ? darkTheme : lightTheme}>
-        <button onClick={() => navigate(-1)}>
-          <ChevronLeft /> Voltar
-        </button>
+        <BackButton path={-1} />
         {countryData ? <CountryDetails data={countryData} /> : <Loading />}
       </MainStyled>
     </CountryPageStyled>
