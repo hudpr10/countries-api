@@ -1,117 +1,61 @@
-# Frontend Mentor - REST Countries API
+# REST Countries API with Color Theme Switcher 🌍🌓
 
-This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+Este projeto é uma interface web interativa que exibe países de todos os continentes com base em dados fornecidos por uma API REST. O objetivo é proporcionar uma experiência intuitiva ao usuário, incluindo busca, filtros por região, tema escuro/claro e uma página com detalhes completos de cada país.
 
-## Table of contents
+## 🚀 Visão Geral
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+Criado como parte de um desafio do [Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca), o projeto teve como foco principal o consumo de APIs REST, gerenciamento global de estado com Redux, roteamento com React Router e alternância de tema usando Styled-components e TypeScript.
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+## 🎯 Objetivos
 
-## Overview
+- Praticar integração com APIs REST usando Fetch
+- Aprender e aplicar o Redux com Redux Toolkit
+- Consolidar conhecimentos de React Router
+- Criar uma interface moderna e responsiva com Styled-components
+- Aprimorar a tipagem de aplicações React com TypeScript
 
-### The challenge
+## 🛠 Tecnologias Utilizadas
 
-Users should be able to:
+- [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Router DOM](https://reactrouter.com/)
+- [Styled-components](https://styled-components.com/)
+- [Lucide Icons](https://lucide.dev/)
+- [Google Fonts – Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans)
 
-- See all countries from the API on the homepage
-- Search for a country using an `input` field
-- Filter countries by region
-- Click on a country to see more detailed information on a separate page
-- Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode _(optional)_
+## ⚙️ Funcionalidades
 
-### Screenshot
+- 🔎 **Busca** por nome de país
+- 🌍 **Filtro por região** (África, América, Ásia, Europa, Oceania)
+- 🌓 **Alternância entre tema claro e escuro**
+  - Tema salvo no `localStorage` e reaplicado automaticamente
+  - Gerenciado globalmente com Redux
+- 📄 **Página de detalhes** com:
+  - Bandeira
+  - Nome, nome nativo
+  - População, região, sub-região e capital
+  - Domínio, moedas, idiomas e fronteiras
+- 📱 **Responsivo** para todos os dispositivos
+- ↩️ **Botão de voltar** para a home com navegação via Router
 
-![](./screenshot.jpg)
+## 🧠 Desafios e Aprendizados
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+### 🔥 Desafios
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
+- Compreender a estrutura da API e seus parâmetros foi um dos maiores desafios iniciais. A leitura da documentação foi essencial.
+- Foi minha primeira experiência com Redux, e tive dificuldades iniciais na estruturação dos slices e no uso de middleware como o redux-logger.
+- Trabalhar com TypeScript em contextos mais avançados como tipagens de roteamento e dados da API exigiu bastante estudo e teste.
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+### 💡 Aprendizados
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+- Aprendi na prática como usar o Redux para gerenciar estado global de forma eficiente, evitando o famoso “prop drilling”.
+- Fortaleci conhecimentos em React Router, consumo de APIs, organização com Styled-components e práticas modernas de front-end.
+- Evoluí na forma como estruturo projetos, entendendo a importância de boas práticas desde a divisão de pastas até a clareza nos comentários de código.
 
-### Links
+## 📁 Melhorias Futuras
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
-
-## My process
-
-### Built with
-
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
-### What I learned
-
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Refatorar e melhorar a **estrutura de pastas** para maior escalabilidade
+- Adicionar **comentários explicativos** em funções mais complexas
+- Organizar e padronizar as importações
+- Criar testes com **Jest** e **React Testing Library**
