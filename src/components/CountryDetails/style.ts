@@ -12,10 +12,6 @@ const CountryDetailedContainer = styled.section`
     border-radius: 8px;
     width: 40%;
     height: 400px;
-
-    @media screen and (max-width: 1456px) {
-      width: 45%;
-    }
   }
 
   /* Titulo mais Detalhes */
@@ -60,19 +56,29 @@ const CountryDetailedContainer = styled.section`
     font-size: 0.9rem;
   }
 
-  a {
+  .button-country {
+    margin-bottom: 0;
     cursor: pointer;
+
     padding: 4px 24px;
     border-radius: 4px;
     background-color: ${({ theme }) => theme.elementsBackground};
+    box-shadow: var(--shadow);
+
     color: ${({ theme }) => theme.color};
     text-decoration: none;
-    box-shadow: var(--shadow);
+    white-space: nowrap;
   }
 
-  a:hover {
+  button:hover {
     box-shadow: var(--hover-shadow);
     opacity: 0.6;
+  }
+
+  @media screen and (max-width: 1456px) {
+    img {
+      width: 45%;
+    }
   }
 
   @media screen and (max-width: 780px) {

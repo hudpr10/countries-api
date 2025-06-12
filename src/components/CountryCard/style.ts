@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
-const CardStyled = styled.a`
+const CardStyled = styled.button`
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow);
   width: min-content;
+
+  box-shadow: var(--shadow);
   border-radius: 4px;
   background-color: ${({ theme }) => theme.elementsBackground};
+  border: none;
+  text-align: start;
+
   transition: 200ms;
 
   cursor: pointer;

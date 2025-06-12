@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
-import type { CountryDetailedType, NameType } from "../../types";
 import { CountryDetailedContainer } from "./style";
+import { darkTheme, lightTheme } from "../../themes/themes";
+
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
-import { darkTheme, lightTheme } from "../../themes/themes";
+
+import { useSearchParams } from "react-router";
+
+import type { CountryDetailedType, NameType } from "../../types";
 import REGEX from "../../regex";
 
 type CountryDetailsProps = {
@@ -82,6 +86,11 @@ const CountryDetails = ({ data }: CountryDetailsProps) => {
     }
   }, [data.borders]);
 
+  const [, setSearchParams] = useSearchParams();
+  const navigateToCountry = (cca3: string) => {
+    setSearchParams({ q: cca3 });
+  };
+
   return (
     <CountryDetailedContainer theme={darkMode ? darkTheme : lightTheme}>
       <img src={data.flags.svg} alt={data.flags.alt} />
@@ -134,12 +143,15 @@ const CountryDetails = ({ data }: CountryDetailsProps) => {
             Fronteiras:{" "}
             {neighbors
               ? neighbors.map((neighbor, index) => (
-                  <a
+                  <button
+                    className="button-country"
                     key={index}
-                    href={`/country?q=${neighbor.cca3.toLowerCase()}`}
+                    onClick={() =>
+                      navigateToCountry(neighbor.cca3.toLowerCase())
+                    }
                   >
                     {neighbor.name.common}
-                  </a>
+                  </button>
                 ))
               : null}
           </span>
